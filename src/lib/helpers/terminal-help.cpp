@@ -6,9 +6,9 @@
 namespace NotAgarIOController {
 
     Terminal::Key Terminal::pressed_key(void) {
-        int key = getch();
+        int key = _getch();
         if(key == 224) {
-            key = getch();
+            key = _getch();
             switch (key) {
                 case 72: return Key::UP;
                 case 80: return Key::DOWN;
