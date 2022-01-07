@@ -9,5 +9,6 @@ namespace NotAgarIOController {
   }
 
   void Game::play(void) {
-    UserIO::show_game_instructions();
+      UserIO::game_instructions();
+  }
 };

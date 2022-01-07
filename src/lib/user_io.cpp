@@ -61,9 +61,9 @@ namespace NotAgarIOController {
     screen_name("Instructions");
 
     std::vector<std::string> content;
-    content.push_back("Type the word correctly as fast possible and confirm using ENTER to score points.");
+    content.push_back("Use the commands to attack other players their blobs and destroy them!");
     content.push_back("");
-    content.push_back("Hit ENTER without typing anything to pass the current word.");
+    content.push_back("Hit ENTER to start typing your commands to attack the others <_<");
     show_content(content);
 
     press_enter_to_continue();

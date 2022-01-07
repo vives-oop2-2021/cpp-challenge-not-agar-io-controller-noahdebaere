@@ -20,13 +20,15 @@ BUILDDIR=bin
 
 OBJS := $(SRCDIR)/main.o \
 				$(LIBDIR)/player.o \
-				$(LIBDIR)/menu/main_menu.o \
-				$(LIBDIR)/menu/menu_item.o \
 				$(LIBDIR)/controller.o \
+				$(LIBDIR)/player_manager.o \
+				$(LIBDIR)/game.o \
+				$(LIBDIR)/user_io.o \
 				$(LIBDIR)/helpers/terminal-help.o \
 				$(LIBDIR)/helpers/string-help.o \
-				$(LIBDIR)/user_io.o \
-
+				$(LIBDIR)/menu/main_menu.o \
+				$(LIBDIR)/menu/menu_item.o \
+				
 all: builddir $(TARGET)
 
 run: all

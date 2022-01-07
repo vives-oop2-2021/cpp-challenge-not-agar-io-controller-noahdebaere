@@ -16,6 +16,9 @@ namespace NotAgarIOController {
 
             switch (next) {
                 case Screen::PLAY:
+                    currentPlayer = playerManager.get_player_by_username(UserIO::get_username());
+                    game = new Game(currentPlayer, &playerManager);
+                    game->play();
                     break;
                 case Screen::DIFFICULTY:
                     break;
