@@ -1,4 +1,5 @@
 #include "terminal-help.h"
+#include <iostream>
 #include <cstdlib>
 #include <conio.h> // Only Windows, TODO implement Linux terminal game
 
@@ -6,7 +7,7 @@ namespace NotAgarIOController {
 
     Terminal::Key Terminal::pressed_key(void) {
         int key = getch();
-        if(key == 0) {
+        if(key == 224) {
             key = getch();
             switch (key) {
                 case 72: return Key::UP;
@@ -14,7 +15,7 @@ namespace NotAgarIOController {
             }
         } else {
             switch (key) {
-            case 13: return Key::ENTER;
+                case 13: return Key::ENTER;
             }
         }
 

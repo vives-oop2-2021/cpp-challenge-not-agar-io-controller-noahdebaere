@@ -7,25 +7,6 @@ using namespace std;
 
 namespace NotAgarIOController {
 
-// How most screens should look:
-//
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~     Word Blaster - Next Gen Typing Motivator     ~     game_title
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~                                                  ~
-// ~ Use the arrow keys to navigate through the menu  ~     instructions
-// ~           and ENTER to select an item.           ~
-// ~                                                  ~
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~                    Main Menu                     ~     screen name
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~                                                  ~
-// ~    ==> 1. Play New Game                          ~     content
-// ~        2. Change Difficulty                      ~
-// ~        3. Show Scoreboard                        ~
-// ~        4. Exit                                   ~
-// ~                                                  ~
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   void UserIO::welcome_screen(void) {
     game_title();
@@ -149,21 +130,21 @@ namespace NotAgarIOController {
     std::vector<std::string> lines = StringHelper::wrap_text(text, WIDTH-4);
     for (auto && line : lines) {
       if (center) {
-        cout << "~ " << StringHelper::center_text(line, WIDTH-4) << " ~" << endl;
+        cout << "| " << StringHelper::center_text(line, WIDTH-4) << " |" << endl;
       } else {
-        cout << "~ " << StringHelper::pad_text(line, WIDTH-4) << " ~" << endl;
+        cout << "| " << StringHelper::pad_text(line, WIDTH-4) << " |" << endl;
       }
     }
   }
 
   void UserIO::show_empty_boxed_lines(unsigned int count) {
     for (unsigned int i = 0; i < count; i++) {
-      cout << "~" << StringHelper::generate_single_character_string(' ', WIDTH-2) << "~" << endl;
+      cout << "|" << StringHelper::generate_single_character_string(' ', WIDTH-2) << "|" << endl;
     }
   }
 
   void UserIO::show_full_box_line(void) {
-    cout << StringHelper::generate_single_character_string('~', WIDTH) << endl;
+    cout << StringHelper::generate_single_character_string('-', WIDTH) << endl;
   }
 
 };

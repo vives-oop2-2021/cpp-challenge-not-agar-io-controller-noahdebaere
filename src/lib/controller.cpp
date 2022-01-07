@@ -35,7 +35,7 @@ namespace NotAgarIOController {
     }
 
     MainMenu Controller::build_main_menu(void) {
-        MainMenu mainMenu("Main Menu - Not Agar.io Controller");
+        MainMenu mainMenu("Main Menu - Controller");
         mainMenu.add("Play New Game", Screen::PLAY);
         mainMenu.add("Set Difficulty", Screen::DIFFICULTY);
         mainMenu.add("Show All Players", Screen::USERS);
