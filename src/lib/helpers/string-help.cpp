@@ -1,4 +1,4 @@
-#include "string_helper.h"
+#include "string-help.h"
 
 namespace NotAgarIOController {
 
@@ -8,6 +8,16 @@ namespace NotAgarIOController {
       output += character;
     }
     return output;
+  }
+
+  int StringHelper::index_of_space_before(std::string text, unsigned int index) {
+    if (index < text.length()) {
+      while (index >= 0 && text[index] != ' ') {
+        index--;
+      }
+      return index;
+    }
+    return -1;
   }
 
   std::string StringHelper::center_text(std::string text, unsigned int boundaryLength) {
@@ -31,6 +41,24 @@ namespace NotAgarIOController {
       }
     }
     return text;
+  }
+
+  std::vector<std::string> StringHelper::wrap_text(std::string text, unsigned int wrapLength) {
+    std::vector<std::string> output;
+
+    do {
+      unsigned int whereToCut = text.length();
+      if (text.length() > wrapLength) {
+        whereToCut = StringHelper::index_of_space_before(text, wrapLength);
+        output.push_back(text.substr(0, whereToCut));
+        text = text.substr(whereToCut+1, text.length()-(whereToCut+1));
+      } else {
+        output.push_back(text);
+        text = "";
+      }
+    } while (text.length() > 0);
+  
+    return output;
   }
 
 };

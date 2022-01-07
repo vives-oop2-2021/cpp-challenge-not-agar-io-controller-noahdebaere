@@ -1,7 +1,7 @@
 #include "user_io.h"
 #include <iostream>
 #include "helpers/terminal-help.h"
-//#include "helpers/string_helper.h"
+#include "helpers/string-help.h"
 
 using namespace std;
 
@@ -38,7 +38,7 @@ namespace NotAgarIOController {
     content.push_back("The original developer has long wasted away typing himself to death.");
     content.push_back("");
     content.push_back("You are warned ...");
-    content(content);
+    show_content(content);
 
     press_enter_to_continue();
   }
@@ -83,7 +83,7 @@ namespace NotAgarIOController {
     content.push_back("Type the word correctly as fast possible and confirm using ENTER to score points.");
     content.push_back("");
     content.push_back("Hit ENTER without typing anything to pass the current word.");
-    content(content);
+    show_content(content);
 
     press_enter_to_continue();
   }
@@ -107,7 +107,7 @@ namespace NotAgarIOController {
     show_full_box_line();
   }
 
-  void UserIO::content(std::vector<std::string> lines, bool centered) {
+  void UserIO::show_content(std::vector<std::string> lines, bool centered) {
     show_empty_boxed_lines();
     for (auto && line : lines) {
       show_boxed_text(line, centered);
@@ -132,7 +132,7 @@ namespace NotAgarIOController {
       }
       content[i] = prefix + content[i];
     }
-    content(content, false);
+    show_content(content, false);
   }
 
   void UserIO::press_enter_to_continue(void) {
