@@ -20,6 +20,8 @@ BUILDDIR=bin
 
 OBJS := $(SRCDIR)/main.o \
 				$(LIBDIR)/player.o \
+				$(LIBDIR)/menu/main_menu.o \
+				$(LIBDIR)/menu/menu_item.o \
 
 all: builddir $(TARGET)
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "player.h"
+#include "menu/main_menu.h"
 
 namespace NotAgarIOController {
 
@@ -13,7 +14,7 @@ namespace NotAgarIOController {
 
         private:
             void main_menu(void);
-            Menu build_main_menu(void);
+            MainMenu build_main_menu(void);
 
         private:
             Player * currentPlayer = nullptr;
