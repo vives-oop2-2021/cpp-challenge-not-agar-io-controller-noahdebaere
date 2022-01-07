@@ -1,12 +1,11 @@
 #include "user_io.h"
-
 #include <iostream>
-#include "helpers/terminal.h"
-#include "helpers/string_helper.h"
+#include "helpers/terminal-help.h"
+//#include "helpers/string_helper.h"
 
 using namespace std;
 
-namespace WordBlasterTheGame {
+namespace NotAgarIOController {
 
 // How most screens should look:
 //
@@ -28,10 +27,10 @@ namespace WordBlasterTheGame {
 // ~                                                  ~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  void UserIO::show_welcome_screen(void) {
-    show_game_title();
+  void UserIO::welcome_screen(void) {
+    game_title();
 
-    show_instructions("PRESS ENTER TO CONTINUE");
+    instructions("PRESS ENTER TO CONTINUE");
 
     std::vector<std::string> content;
     content.push_back("Please be carefull. This is a very addictive game and may lead to many wasted hours!");
@@ -39,120 +38,76 @@ namespace WordBlasterTheGame {
     content.push_back("The original developer has long wasted away typing himself to death.");
     content.push_back("");
     content.push_back("You are warned ...");
-    show_content(content);
+    content(content);
 
     press_enter_to_continue();
   }
 
-  std::string UserIO::request_nickname(void) {
+  std::string UserIO::get_username(void) {
     std::string nickname = "";
     do {
-      show_game_title();
-      show_instructions("Please enter the nickname with which you would like to play.");
+      game_title();
+      instructions("Please enter the nickname with which you would like to play.");
 
       cout << endl << "Nickname: ";
-      nickname = request_string_input();
+      nickname = get_string_input();
     } while(nickname == "");
 
     return nickname;
   }
 
-  MenuItem UserIO::request_menu_selection(Menu * menu) {
+  MenuItem UserIO::get_menu_selection(MainMenu * menu) {
     Terminal::Key key;
     do {
-      show_game_title();
-      show_instructions("Use the arrow keys to navigate through the menu and ENTER to select an item.");
-      show_screen_name(menu->get_title());
+      game_title();
+      instructions("Use the arrow keys to navigate through the menu and ENTER to select an item.");
+      screen_name(menu->get_title());
       show_menu(menu);
       key = Terminal::pressed_key();
       if (key == Terminal::Key::DOWN) {
-        menu->select_next();
+        menu->next_item();
       } else if (key == Terminal::UP) {
-        menu->select_previous();
+        menu->previous_item();
       }
     } while (key != Terminal::Key::ENTER);
 
     return menu->get_selected_item();
   }
 
-  void UserIO::show_game_instructions(void) {
-    show_game_title();
-    show_instructions("PRESS ENTER TO START");
-    show_screen_name("Instructions");
+  void UserIO::game_instructions(void) {
+    game_title();
+    instructions("PRESS ENTER TO START");
+    screen_name("Instructions");
 
     std::vector<std::string> content;
     content.push_back("Type the word correctly as fast possible and confirm using ENTER to score points.");
     content.push_back("");
     content.push_back("Hit ENTER without typing anything to pass the current word.");
-    show_content(content);
+    content(content);
 
     press_enter_to_continue();
   }
 
-  std::string UserIO::request_user_attempt_at_word(unsigned int number, std::string word) {
-    show_game_title();
-    show_instructions("Type the word as fast as possible and hit ENTER.");
-    show_screen_name("Playing ...");
-
-    show_empty_boxed_lines(1);
-    show_boxed_text("  Word #" + std::to_string(number+1) + ": ", false);
-    show_boxed_text(word);
-    show_empty_boxed_lines(1);
-    show_full_box_line();
-
-    cout << std::endl << "YOU > ";
-    return request_string_input();;
-  }
-
-  void UserIO::show_final_score(Score score) {
-    show_game_title();
-    show_instructions("PRESS ENTER TO START");
-    show_screen_name("Final score");
-
-    std::vector<std::string> content;
-    content.push_back("Your final score is ...");
-    content.push_back("");
-    content.push_back(std::to_string(score.total_score()));
-    show_content(content);
-
-    press_enter_to_continue();
-  }
-
-  void UserIO::show_scoreboard(Scoreboard * board) {
-    show_game_title();
-
-    show_instructions("PRESS ENTER TO CONTINUE");
-
-    std::vector<std::string> content;
-    for (auto && score : board->get_scores()) {
-      content.push_back(score.get_player()->get_nickname()
-        + " - " + std::to_string(score.total_score()));
-    }
-    show_content(content);
-
-    press_enter_to_continue();
-  }
-
-  void UserIO::show_game_title(void) {
+  void UserIO::game_title(void) {
     Terminal::clear();
     show_full_box_line();
-    show_boxed_text("Word Blaster - Next Gen Typing Motivator");
+    show_boxed_text("Not Agar.io Controller - Noah Debaere");
     show_full_box_line();
   }
 
-  void UserIO::show_instructions(std::string instructions) {
+  void UserIO::instructions(std::string instructions) {
     show_empty_boxed_lines();
     show_boxed_text(instructions);
     show_empty_boxed_lines();
     show_full_box_line();
   }
 
-  void UserIO::show_screen_name(std::string name) {
+  void UserIO::screen_name(std::string name) {
     show_boxed_text(name);
     show_full_box_line();
   }
 
-  void UserIO::show_content(std::vector<std::string> lines, bool centered) {
+  void UserIO::content(std::vector<std::string> lines, bool centered) {
     show_empty_boxed_lines();
     for (auto && line : lines) {
       show_boxed_text(line, centered);
@@ -161,12 +116,12 @@ namespace WordBlasterTheGame {
     show_full_box_line();
   }
 
-  void UserIO::show_menu(Menu * menu, bool numbered) {
-    std::vector<std::string> content = menu->get_labels();
+  void UserIO::show_menu(MainMenu * menu, bool numbered) {
+    std::vector<std::string> content = menu->get_title_items();
 
     for (unsigned int i = 0; i < content.size(); i++) {
       std::string prefix = "";
-      if (menu->get_selected_item().get_label() == content[i]) {
+      if (menu->get_selected_item().get_title() == content[i]) {
         prefix = "   ==> ";
       } else {
         prefix = "       ";
@@ -177,14 +132,14 @@ namespace WordBlasterTheGame {
       }
       content[i] = prefix + content[i];
     }
-    show_content(content, false);
+    content(content, false);
   }
 
   void UserIO::press_enter_to_continue(void) {
-    request_string_input();
+    get_string_input();
   }
 
-  std::string UserIO::request_string_input(void) {
+  std::string UserIO::get_string_input(void) {
     std::string input;
     getline(cin, input);
     return input;

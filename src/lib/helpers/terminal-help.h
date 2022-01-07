@@ -9,7 +9,7 @@ namespace NotAgarIOController {
             DOWN,
             ENTER,
             UNKNOWN
-        }
+        };
 
         public:
             static Key pressed_key(void);
