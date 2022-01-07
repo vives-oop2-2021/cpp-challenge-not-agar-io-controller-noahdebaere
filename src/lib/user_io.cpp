@@ -14,11 +14,11 @@ namespace NotAgarIOController {
     instructions("PRESS ENTER TO CONTINUE");
 
     std::vector<std::string> content;
-    content.push_back("Please be carefull. This is a very addictive game and may lead to many wasted hours!");
+    content.push_back("This terminal application serves as the controller for the Not Agar.io Game!");
     content.push_back("");
-    content.push_back("The original developer has long wasted away typing himself to death.");
+    content.push_back("Be mindful, this game has been tested on a Windows OS terminal.");
     content.push_back("");
-    content.push_back("You are warned ...");
+    content.push_back("Have fun playing and eating blobs :)");
     show_content(content);
 
     press_enter_to_continue();
