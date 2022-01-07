@@ -35,6 +35,8 @@ namespace NotAgarIOController {
                     break;
             }
         } while (next != Screen::EXIT);
+        system("clear");
+        lscreen.print();
     }
 
     MainMenu Controller::build_main_menu(void) {

@@ -10,7 +10,9 @@ namespace NotAgarIOController {
             LoadingScreen(void);
 
         public:
-            std::string to_string(void);
+            void print(void);
+
+        private:
 
     };
 };

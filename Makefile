@@ -28,6 +28,7 @@ OBJS := $(SRCDIR)/main.o \
 				$(LIBDIR)/helpers/string-help.o \
 				$(LIBDIR)/menu/main_menu.o \
 				$(LIBDIR)/menu/menu_item.o \
+				$(LIBDIR)/menu/loading-screen.o \
 				
 all: builddir $(TARGET)
 

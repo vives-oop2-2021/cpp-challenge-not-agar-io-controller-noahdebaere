@@ -3,6 +3,7 @@
 #include "menu/main_menu.h"
 #include "player_manager.h"
 #include "game.h"
+#include "menu/loading-screen.h"
 
 namespace NotAgarIOController {
 
@@ -22,6 +23,7 @@ namespace NotAgarIOController {
             Player * currentPlayer = nullptr;
             Game * game = nullptr;
             PlayerManager playerManager;
+            LoadingScreen lscreen;
 
     };
 };
