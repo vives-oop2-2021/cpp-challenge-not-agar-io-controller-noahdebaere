@@ -8,6 +8,5 @@ int main() {
     NotAgarIOController::Controller controller;
     controller.start();
     
-
     return 0;
 }

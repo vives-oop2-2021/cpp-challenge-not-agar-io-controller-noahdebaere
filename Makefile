@@ -22,6 +22,8 @@ OBJS := $(SRCDIR)/main.o \
 				$(LIBDIR)/player.o \
 				$(LIBDIR)/menu/main_menu.o \
 				$(LIBDIR)/menu/menu_item.o \
+				$(LIBDIR)/controller.o \
+				
 
 all: builddir $(TARGET)
 
