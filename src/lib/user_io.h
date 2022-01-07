@@ -9,6 +9,7 @@ namespace NotAgarIOController {
     public:
       static void welcome_screen(void);
       static void game_instructions(void);
+      static void help_screen(void);
     
     public:
       static std::string get_username(void);
@@ -29,7 +30,7 @@ namespace NotAgarIOController {
       static std::string get_string_input(void);
 
     private:
-      static const unsigned int WIDTH = 52;
+      static const unsigned int WIDTH = 64;
 
   };
 

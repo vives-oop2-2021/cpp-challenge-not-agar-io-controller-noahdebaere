@@ -10,7 +10,6 @@ namespace NotAgarIOController {
 
   void UserIO::welcome_screen(void) {
     game_title();
-
     instructions("PRESS ENTER TO CONTINUE");
 
     std::vector<std::string> content;
@@ -23,6 +22,30 @@ namespace NotAgarIOController {
 
     press_enter_to_continue();
   }
+
+  void UserIO::help_screen(void) {
+    game_title();
+    instructions("Below you can find all of the commands necessary for using the controller!");
+
+    std::vector<std::string> content;
+    content.push_back("\"help\" - show the available commands");
+    content.push_back("");
+    content.push_back("\"register <username>\" - register a player in the game");
+    content.push_back("");
+    content.push_back("\"players\" - get a list of all players");
+    content.push_back("");
+    content.push_back("\"move <blob> <direction> <distance>\" - move your blob around");
+    content.push_back("");
+    content.push_back("\"shoot <your_blob> <username> <their_blob>\" - shoot an enemies' blob");
+    content.push_back("");
+    content.push_back("\"exit\" - exit the game and go back to the main menu");
+    content.push_back("");
+    content.push_back("Press ENTER to go back!");
+    show_content(content);
+
+    press_enter_to_continue();
+  }
+
 
   std::string UserIO::get_username(void) {
     std::string nickname = "";

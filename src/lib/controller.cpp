@@ -29,6 +29,7 @@ namespace NotAgarIOController {
                 case Screen::SCOREBOARD:
                     break;
                 case Screen::HELP:
+                    UserIO::help_screen();
                     break;
                 
                 default:
