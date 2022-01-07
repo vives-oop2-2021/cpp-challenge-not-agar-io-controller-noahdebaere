@@ -23,6 +23,7 @@ OBJS := $(SRCDIR)/main.o \
 				$(LIBDIR)/menu/main_menu.o \
 				$(LIBDIR)/menu/menu_item.o \
 				$(LIBDIR)/controller.o \
+				$(LIBDIR)/helpers/terminal-help.o \
 				
 
 all: builddir $(TARGET)
