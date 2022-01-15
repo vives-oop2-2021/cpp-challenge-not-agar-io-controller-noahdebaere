@@ -15,7 +15,7 @@ namespace NotAgarIOController {
     std::vector<std::string> content;
     content.push_back("This terminal application serves as the controller for the Not Agar.io Game!");
     content.push_back("");
-    content.push_back("Be mindful, this game has been tested on a Windows OS terminal.");
+    content.push_back("Be mindful, this game has been tested on both Windows and Ubuntu terminals");
     content.push_back("");
     content.push_back("Have fun playing and eating blobs :)");
     show_content(content);
@@ -41,23 +41,52 @@ namespace NotAgarIOController {
     content.push_back("\"exit\" - exit the game and go back to the main menu");
     content.push_back("");
     content.push_back("Press ENTER to go back!");
-    show_content(content);
 
+    show_content(content);
     press_enter_to_continue();
   }
 
+  void UserIO::to_do_screen(void) {
+    game_title();
+    instructions("!THIS PAGE IS STILL UNDER CONSTRUCTION!");
 
+    std::vector<std::string> content;
+    content.push_back("TO DO...");
+    content.push_back("");
+    content.push_back("Press ENTER to go back!");
+
+    show_content(content); 
+    press_enter_to_continue();
+  }
+
+  void UserIO::set_game_screen(void) {
+    game_title();
+    instructions("Type your next command in the terminal below! Type \"help\" for more information...");
+  }
+
+  Commands UserIO::get_user_command(void) {
+    std::string command = "";
+    Commands nextCommand;
+    do {
+      cout << endl << "not-agar.io controller|>  ";
+      command = get_string_input();
+      nextCommand = return_command_by_string_input(command);
+    } while(command == "");
+
+    return nextCommand;    
+  }
+  
   std::string UserIO::get_username(void) {
-    std::string nickname = "";
+    std::string username = "";
     do {
       game_title();
-      instructions("Please enter the nickname with which you would like to play.");
+      instructions("Please enter the username with which you would like to play.");
 
-      cout << endl << "Nickname: ";
-      nickname = get_string_input();
-    } while(nickname == "");
+      cout << endl << "Username: ";
+      username = get_string_input();
+    } while(username == "");
 
-    return nickname;
+    return username;
   }
 
   MenuItem UserIO::get_menu_selection(MainMenu * menu) {
@@ -86,7 +115,7 @@ namespace NotAgarIOController {
     std::vector<std::string> content;
     content.push_back("Use the commands to attack other players their blobs and destroy them!");
     content.push_back("");
-    content.push_back("Hit ENTER to start typing your commands to attack the others <_<");
+    content.push_back("Hit ENTER to start typing your commands to attack the other blobs <_<");
     show_content(content);
 
     press_enter_to_continue();
@@ -94,6 +123,12 @@ namespace NotAgarIOController {
 
   void UserIO::game_title(void) {
     Terminal::clear();
+    show_full_box_line();
+    show_boxed_text("Not Agar.io Controller - Noah Debaere");
+    show_full_box_line();
+  }
+
+  void UserIO::game_title_without_clear(void) {
     show_full_box_line();
     show_boxed_text("Not Agar.io Controller - Noah Debaere");
     show_full_box_line();
@@ -147,6 +182,26 @@ namespace NotAgarIOController {
     std::string input;
     getline(cin, input);
     return input;
+  }
+
+  Commands UserIO::return_command_by_string_input(std::string command) {
+    if (command == "help") {
+      return Commands::HELP;
+    } else if (command == "exit") {
+      return Commands::EXIT;
+    } else if (command == "players") {
+      return Commands::PLAYERS;
+    } else if (command == "exit") {
+      return Commands::EXIT;
+    } else if (command.substr(0,7) == "register") {
+      return Commands::REGISTER;
+    } else if (command.substr(0,3) == "move") {
+      return Commands::MOVE;
+    } else if (command.substr(0,4) == "shoot") {
+      return Commands::SHOOT;
+    } else {
+      return Commands::UNKNOWN;
+    }
   }
 
   void UserIO::show_boxed_text(std::string text, bool center) {

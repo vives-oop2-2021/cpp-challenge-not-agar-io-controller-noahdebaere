@@ -21,12 +21,14 @@ namespace NotAgarIOController {
                     game->play();
                     break;
                 case Screen::DIFFICULTY:
+                    UserIO::to_do_screen();
                     break;
                 case Screen::USERS:
                     break;
                 case Screen::REGISTER:
                     break;
                 case Screen::SCOREBOARD:
+                    UserIO::to_do_screen();
                     break;
                 case Screen::HELP:
                     UserIO::help_screen();
