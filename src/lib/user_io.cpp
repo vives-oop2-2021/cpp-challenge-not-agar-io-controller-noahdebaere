@@ -30,6 +30,8 @@ namespace NotAgarIOController {
     std::vector<std::string> content;
     content.push_back("\"help\" - show the available commands");
     content.push_back("");
+    content.push_back("\"clear\" - clears the terminal");
+    content.push_back("");
     content.push_back("\"register <username>\" - register a player in the game");
     content.push_back("");
     content.push_back("\"players\" - get a list of all players");
@@ -44,6 +46,28 @@ namespace NotAgarIOController {
 
     show_content(content);
     press_enter_to_continue();
+  }
+
+  void UserIO::help_screen_in_game(void) {
+    game_title_without_clear();
+    instructions("Below you can find all of the commands necessary for using the controller!");
+
+    std::vector<std::string> content;
+    content.push_back("\"help\" - show the available commands");
+    content.push_back("");
+    content.push_back("\"clear\" - clears the terminal");
+    content.push_back("");
+    content.push_back("\"register <username>\" - register a player in the game");
+    content.push_back("");
+    content.push_back("\"players\" - get a list of all players");
+    content.push_back("");
+    content.push_back("\"move <blob> <direction> <distance>\" - move your blob around");
+    content.push_back("");
+    content.push_back("\"shoot <your_blob> <username> <their_blob>\" - shoot an enemies' blob");
+    content.push_back("");
+    content.push_back("\"exit\" - exit the game and go back to the main menu");
+
+    show_content(content);
   }
 
   void UserIO::to_do_screen(void) {
@@ -191,6 +215,8 @@ namespace NotAgarIOController {
       return Commands::EXIT;
     } else if (command == "players") {
       return Commands::PLAYERS;
+    } else if (command == "clear") {
+      return Commands::CLEAR;
     } else if (command == "exit") {
       return Commands::EXIT;
     } else if (command.substr(0,7) == "register") {
@@ -200,6 +226,7 @@ namespace NotAgarIOController {
     } else if (command.substr(0,4) == "shoot") {
       return Commands::SHOOT;
     } else {
+      cout << "Unknown command, please fix your typo or enter \"help\" to see all valid commands..." << endl;
       return Commands::UNKNOWN;
     }
   }

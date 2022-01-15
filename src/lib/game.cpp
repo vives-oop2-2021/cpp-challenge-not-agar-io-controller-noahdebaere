@@ -18,9 +18,10 @@ namespace NotAgarIOController {
         command = UserIO::get_user_command();
         switch (command) {
           case Commands::HELP:
-            UserIO::help_screen();
-            UserIO::set_game_screen();
+            UserIO::help_screen_in_game();
             break;
+          case Commands::CLEAR:
+            UserIO::set_game_screen();
           case Commands::UNKNOWN:
             break;
         }

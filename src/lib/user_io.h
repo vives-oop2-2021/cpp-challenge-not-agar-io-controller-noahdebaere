@@ -11,6 +11,7 @@ namespace NotAgarIOController {
       static void welcome_screen(void);
       static void game_instructions(void);
       static void help_screen(void);
+      static void help_screen_in_game(void);
       static void to_do_screen(void);
       static void set_game_screen(void);
     

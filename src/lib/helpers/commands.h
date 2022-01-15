@@ -10,6 +10,7 @@ namespace NotAgarIOController {
         PLAYERS,
         MOVE,
         SHOOT,
+        CLEAR,
         UNKNOWN
     };
 };
