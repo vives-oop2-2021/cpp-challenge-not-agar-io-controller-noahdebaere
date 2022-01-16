@@ -11,6 +11,7 @@ namespace NotAgarIOController {
     public:
       static void welcome_screen(void);
       static void game_instructions(void);
+      static void register_screen(void);
       static void help_screen(void);
       static void help_screen_in_game(void);
       static void users_screen(PlayerManager * playerManager);
@@ -19,10 +20,10 @@ namespace NotAgarIOController {
       static void set_game_screen(void);
     
     public:
-      static std::string register_screen(void);
       static std::string get_username(void);
-      static Commands get_user_command(void);
+      static std::string get_user_command(void);
       static MenuItem get_menu_selection(MainMenu * menu);
+      static Commands return_command_by_string_input(std::string command);
 
     private:
       static void game_title(void);
@@ -38,7 +39,6 @@ namespace NotAgarIOController {
     private:
       static void press_enter_to_continue(void);
       static std::string get_string_input(void);
-      static Commands return_command_by_string_input(std::string command);
 
     private:
       static const unsigned int WIDTH = 64;

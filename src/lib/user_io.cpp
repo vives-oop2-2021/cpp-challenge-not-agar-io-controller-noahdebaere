@@ -70,28 +70,21 @@ namespace NotAgarIOController {
     show_content(content);
   }
 
-  std::string UserIO::register_screen(void) {
+  void UserIO::register_screen(void) {
     game_title();
-    instructions("Register your user below and confirm with ENTER!");
+    instructions("Registering your user - go back with ENTER!");
 
     std::vector<std::string> content;
-    content.push_back("You can either register your user here or register your user with the command");
+    content.push_back("You can either register your user at the start of the game or register your user with the command");
     content.push_back("");
-    content.push_back("\"register <username>\" - but be mindful of the fact that only registered users");
+    content.push_back("\"register <username>\" - but be mindful of the fact that only registered users their score will");
     content.push_back("");
-    content.push_back("their score will be saved. You want to see your name on that scoreboard?");
+    content.push_back("be saved. You want to see your name on that scoreboard? You want to prove that you're the best?");
     content.push_back("");
-    content.push_back("You want to prove that you're the best? Then don't be a fool and register yourself!");
+    content.push_back("Then don't be a fool and register yourself! Leave blank for playing anonymously...");
     show_content(content);
 
-    std::string username = get_username();
-
-    cout << "The user with username: " << username << " will be registered..." << endl;
-    cout << "Press ENTER to complete registration" << endl;
-    // TODO: add way of opting out of registration...
     press_enter_to_continue();
-
-    return username;
   }
 
   void UserIO::users_screen(PlayerManager * playerManager) {
@@ -110,7 +103,7 @@ namespace NotAgarIOController {
   }
 
   void UserIO::users_screen_in_game(PlayerManager * playerManager) {
-    game_title();
+    game_title_without_clear();
     instructions("Below you can find all of the registered users:");
 
     std::vector<std::string> users;
@@ -140,16 +133,14 @@ namespace NotAgarIOController {
     instructions("Type your next command in the terminal below! Type \"help\" for more information...");
   }
 
-  Commands UserIO::get_user_command(void) {
+  std::string UserIO::get_user_command(void) {
     std::string command = "";
-    Commands nextCommand;
     do {
       cout << endl << "not-agar.io controller|>  ";
       command = get_string_input();
-      nextCommand = return_command_by_string_input(command);
     } while(command == "");
 
-    return nextCommand;    
+    return command;    
   }
   
   std::string UserIO::get_username(void) {
@@ -271,11 +262,12 @@ namespace NotAgarIOController {
       return Commands::CLEAR;
     } else if (command == "exit") {
       return Commands::EXIT;
-    } else if (command.substr(0,7) == "register") {
+    } else if (command.substr(0,8) == "register") {
+      cout << "Registering user " << command.substr(9) << " ..." << endl;
       return Commands::REGISTER;
-    } else if (command.substr(0,3) == "move") {
+    } else if (command.substr(0,4) == "move") {
       return Commands::MOVE;
-    } else if (command.substr(0,4) == "shoot") {
+    } else if (command.substr(0,5) == "shoot") {
       return Commands::SHOOT;
     } else {
       cout << "Unknown command, please fix your typo or enter \"help\" to see all valid commands..." << endl;

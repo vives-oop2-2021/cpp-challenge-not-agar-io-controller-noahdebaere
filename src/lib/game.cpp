@@ -15,7 +15,8 @@ namespace NotAgarIOController {
       UserIO::set_game_screen();
       Commands command;
       do {
-        command = UserIO::get_user_command();
+        std::string fullCommand = UserIO::get_user_command();
+        command = UserIO::return_command_by_string_input(fullCommand);
         switch (command) {
           case Commands::HELP:
             UserIO::help_screen_in_game();
@@ -24,7 +25,10 @@ namespace NotAgarIOController {
             UserIO::set_game_screen();
             break;
           case Commands::PLAYERS:
-            UserIO::users_screen_in_game(&playerManager);
+            UserIO::users_screen_in_game(this->playerManager);
+            break;
+          case Commands::REGISTER:
+            this->playerManager->get_player_by_username(fullCommand.substr(9));
             break;
           case Commands::UNKNOWN:
             break;
