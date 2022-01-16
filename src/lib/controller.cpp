@@ -24,8 +24,10 @@ namespace NotAgarIOController {
                     UserIO::to_do_screen();
                     break;
                 case Screen::USERS:
+                    UserIO::users_screen(&playerManager);
                     break;
                 case Screen::REGISTER:
+                    playerManager.get_player_by_username(UserIO::register_screen());
                     break;
                 case Screen::SCOREBOARD:
                     UserIO::to_do_screen();

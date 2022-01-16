@@ -9,6 +9,7 @@ namespace NotAgarIOController {
 
     public:
       Player * get_player_by_username(std::string username);
+      std::vector<Player *> get_all_players(void);
 
     public:
       ~PlayerManager(void);
@@ -17,6 +18,6 @@ namespace NotAgarIOController {
       Player * add_player(std::string nickname);
 
     private:
-      std::vector<Player*> players;
+      std::vector<Player *> players;
   };
 };

@@ -2,6 +2,7 @@
 #include <string>
 #include "helpers/commands.h"
 #include "menu/main_menu.h"
+#include "player_manager.h"
 
 namespace NotAgarIOController {
 
@@ -12,10 +13,12 @@ namespace NotAgarIOController {
       static void game_instructions(void);
       static void help_screen(void);
       static void help_screen_in_game(void);
+      static void users_screen(PlayerManager * playerManager);
       static void to_do_screen(void);
       static void set_game_screen(void);
     
     public:
+      static std::string register_screen(void);
       static std::string get_username(void);
       static Commands get_user_command(void);
       static MenuItem get_menu_selection(MainMenu * menu);

@@ -18,6 +18,10 @@ namespace NotAgarIOController {
     return player;
   }
 
+  std::vector<Player *> PlayerManager::get_all_players(void) {
+    return this->players;
+  }
+
   PlayerManager::~PlayerManager(void) {
     for (unsigned int i = 0; i < players.size(); i++) {
       delete players[i];

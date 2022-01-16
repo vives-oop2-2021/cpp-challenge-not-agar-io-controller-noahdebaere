@@ -70,6 +70,45 @@ namespace NotAgarIOController {
     show_content(content);
   }
 
+  std::string UserIO::register_screen(void) {
+    game_title();
+    instructions("Register your user below and confirm with ENTER!");
+
+    std::vector<std::string> content;
+    content.push_back("You can either register your user here or register your user with the command");
+    content.push_back("");
+    content.push_back("\"register <username>\" - but be mindful of the fact that only registered users");
+    content.push_back("");
+    content.push_back("their score will be saved. You want to see your name on that scoreboard?");
+    content.push_back("");
+    content.push_back("You want to prove that you're the best? Then don't be a fool and register yourself!");
+    show_content(content);
+
+    std::string username = get_username();
+
+    cout << "The user with username: " << username << " will be registered..." << endl;
+    cout << "Press ENTER to complete registration" << endl;
+    // TODO: add way of opting out of registration...
+    press_enter_to_continue();
+
+    return username;
+  }
+
+  void UserIO::users_screen(PlayerManager * playerManager) {
+    game_title();
+    instructions("Below you can find all of the registered users:");
+
+    std::vector<std::string> users;
+    for (auto && player : playerManager->get_all_players()) {
+      users.push_back(player->get_username());
+    }
+    users.push_back("");
+    users.push_back("To go back please press ENTER...");
+    show_content(users);
+
+    press_enter_to_continue();
+  }
+
   void UserIO::to_do_screen(void) {
     game_title();
     instructions("!THIS PAGE IS STILL UNDER CONSTRUCTION!");
