@@ -22,6 +22,10 @@ namespace NotAgarIOController {
             break;
           case Commands::CLEAR:
             UserIO::set_game_screen();
+            break;
+          case Commands::PLAYERS:
+            UserIO::users_screen_in_game(&playerManager);
+            break;
           case Commands::UNKNOWN:
             break;
         }

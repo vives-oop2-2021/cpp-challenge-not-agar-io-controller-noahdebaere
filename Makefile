@@ -4,7 +4,7 @@ CC=g++
 # Compiler flags
 CFLAGS=-c -Wall -std=c++17
     # -c: Compile or assemble the source files, but do not link.
-    # -Wall: This enables all the warnings about constructions that
+    # -Wall: This enables all the warnings
 
 # Linker flags
 # LDFLAGS=

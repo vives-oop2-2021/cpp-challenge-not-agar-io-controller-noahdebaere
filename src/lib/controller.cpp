@@ -40,6 +40,7 @@ namespace NotAgarIOController {
                     break;
             }
         } while (next != Screen::EXIT);
+        playerManager.quit();
         system("clear");
         lscreen.print();
     }
@@ -58,6 +59,6 @@ namespace NotAgarIOController {
     }
 
     Controller::~Controller(void) {
-        
+        delete game;        
     }
 }

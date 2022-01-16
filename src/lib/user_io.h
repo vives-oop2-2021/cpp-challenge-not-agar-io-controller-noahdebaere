@@ -14,6 +14,7 @@ namespace NotAgarIOController {
       static void help_screen(void);
       static void help_screen_in_game(void);
       static void users_screen(PlayerManager * playerManager);
+      static void users_screen_in_game(PlayerManager * playerManager);
       static void to_do_screen(void);
       static void set_game_screen(void);
     

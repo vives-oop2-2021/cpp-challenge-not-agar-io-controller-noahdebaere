@@ -24,6 +24,5 @@ namespace NotAgarIOController {
             Game * game = nullptr;
             PlayerManager playerManager;
             LoadingScreen lscreen;
-
     };
 };

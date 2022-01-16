@@ -109,6 +109,19 @@ namespace NotAgarIOController {
     press_enter_to_continue();
   }
 
+  void UserIO::users_screen_in_game(PlayerManager * playerManager) {
+    game_title();
+    instructions("Below you can find all of the registered users:");
+
+    std::vector<std::string> users;
+    for (auto && player : playerManager->get_all_players()) {
+      users.push_back(player->get_username());
+    }
+    users.push_back("");
+    users.push_back("To register a new user, use \"register <username>\"");
+    show_content(users);
+  }
+
   void UserIO::to_do_screen(void) {
     game_title();
     instructions("!THIS PAGE IS STILL UNDER CONSTRUCTION!");
