@@ -4,4 +4,3 @@ tattie
 nico
 green
 blue
-testregister

@@ -16,7 +16,7 @@ LIBS=-lcurlpp -lcurl
 TARGET=controller
 SRCDIR=src
 LIBDIR=$(SRCDIR)/lib
-BUILDDIR=bin
+BUILDDIR=build
 
 OBJS := $(SRCDIR)/main.o \
 				$(LIBDIR)/player.o \
