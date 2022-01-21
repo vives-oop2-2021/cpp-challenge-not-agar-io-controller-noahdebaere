@@ -1,7 +1,9 @@
 #include <iostream>
+#include <sstream>
 #include "game.h"
 #include "user_io.h"
 #include "helpers/commands.h"
+#include "interact.h"
 
 namespace NotAgarIOController {
 
@@ -30,9 +32,26 @@ namespace NotAgarIOController {
           case Commands::REGISTER:
             this->playerManager->get_player_by_username(fullCommand.substr(9));
             break;
-          case Commands::UNKNOWN:
+          case Commands::MOVE:
+            Interact::move_blob(player, split_command(fullCommand)[1], split_command(fullCommand)[2], std::stoi(split_command(fullCommand)[3]));
+            break;
+          case Commands::SHOOT:
+            break;
+
+          default:
             break;
         }
       } while (command != Commands::EXIT);
   }
+
+  std::vector<std::string> Game::split_command(std::string command) {
+    std::vector<std::string> arguments;
+    std::stringstream temp(command);
+    std::string word;
+    while(temp >> word) {
+      arguments.push_back(word);
+    }
+    return arguments;
+  }
+
 };

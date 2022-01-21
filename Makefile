@@ -7,10 +7,10 @@ CFLAGS=-c -Wall -std=c++17
     # -Wall: This enables all the warnings
 
 # Linker flags
-# LDFLAGS=
+LDFLAGS=-lcurlpp -lcurl
 
 # Libraries
-# LIBS=
+LIBS=-lcurlpp -lcurl
 
 # Name of executable output
 TARGET=controller
@@ -24,6 +24,7 @@ OBJS := $(SRCDIR)/main.o \
 				$(LIBDIR)/player_manager.o \
 				$(LIBDIR)/game.o \
 				$(LIBDIR)/user_io.o \
+				$(LIBDIR)/interact.o \
 				$(LIBDIR)/helpers/terminal-help.o \
 				$(LIBDIR)/helpers/string-help.o \
 				$(LIBDIR)/menu/main_menu.o \

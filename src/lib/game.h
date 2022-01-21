@@ -12,6 +12,9 @@ namespace NotAgarIOController {
       void play(void);
 
     private:
+      std::vector<std::string> split_command(std::string arguments);
+
+    private:
       Player * player = nullptr;
       PlayerManager * playerManager = nullptr;
   };
