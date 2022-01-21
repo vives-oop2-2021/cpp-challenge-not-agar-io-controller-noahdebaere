@@ -36,6 +36,7 @@ namespace NotAgarIOController {
             Interact::move_blob(player, split_command(fullCommand)[1], split_command(fullCommand)[2], std::stoi(split_command(fullCommand)[3]));
             break;
           case Commands::SHOOT:
+            Interact::shoot_blob(this->player, split_command(fullCommand)[1], split_command(fullCommand)[2], split_command(fullCommand)[3]);
             break;
 
           default:

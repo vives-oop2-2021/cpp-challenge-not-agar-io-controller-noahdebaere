@@ -3,3 +3,5 @@ yannicka
 tattie
 nico
 green
+blue
+testregister
